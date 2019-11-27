@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>FINAL S.O</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<body>
+
+	<div class="row">
+			<div class="col-md-12">
+				<h1>LISTA DE PROCESOS</h1>
+			</div>
+		</div>
+		
+		<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th colspan="2">NAME</th>
+							<th colspan="2">ID</th>
+							<th colspan="2">STOP</th>
+							
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${Processes.empty}">
+							<td colspan="6" ><b>Processes empty, refresh please!</b></td>
+						</tr>
+						<tr th:each="process : ${Processes}">
+							<td colspan="2"><span th:text="${process.name}"> NAME </span></td>
+							<td colspan="2"><span th:text="${process.id}"> ID </span></td>
+					<td colspan="4">
+						<form  action="#"
+							th:action="@{'/processes/stop/' + ${process.id}}" method="post"
+							class="form-horizontal" role="form">
+							
+							<button style="border-radius: 10px" type="submit" >Stop</button>
+						</form>
+					</td>
+				</tr>
+					</tbody>
+					
+					
+					
+					
+				</table>
+				
+			</div>
+
+</body>
+</html>
